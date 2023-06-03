@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { getGenres } from '../store'
 import { useSelector } from 'react-redux'
 import { fetchMovies } from '../store'
+import Slider from '../components/Slider'
 
 export default function Chillflix() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,8 +33,11 @@ export default function Chillflix() {
 
   return (
     <div>
+      
+      
+     
       <Navbar isScrolled={isScrolled} />
-      <div className=' absolute flex'>
+      <div className='  flex'>
         <img src={IceAge} alt="" />
         <div className=' absolute bottom-60'>
           <div>
@@ -42,8 +46,15 @@ export default function Chillflix() {
           <div>
             <button onClick={() => navigate('/Player')}>play</button>
           </div>
+          
         </div>
+        
+        
       </div>
+      <div className=' relative w-screen h-screen flex'>
+      <Slider movies={movies} className="flex" />
+      </div>
+      
     </div>
   )
 }
