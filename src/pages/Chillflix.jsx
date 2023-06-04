@@ -32,7 +32,7 @@ export default function Chillflix() {
   }
 
   return (
-    <div>
+    <div className='w-screen h-screen '>
       
       
      
@@ -51,8 +51,8 @@ export default function Chillflix() {
         
         
       </div>
-      <div className=' relative w-screen h-screen flex'>
-      <Slider movies={movies} className="flex" />
+      <div className=' relative w-screen h-screen flex '>
+      <Slider movies={movies} className="flex " />
       </div>
       
     </div>
