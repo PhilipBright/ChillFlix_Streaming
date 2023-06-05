@@ -7,7 +7,7 @@ function Card({ movieData, isLiked = false }) {
 
   return (
     <div
-      className={`card relative overflow-hidden flex-shrink-0 ${
+      className={`cursor-pointer card relative overflow-hidden flex-shrink-0 ${
         isHovered ? "scale-105" : ""
       } transition-transform duration-300`}
       onMouseEnter={() => setIsHovered(true)}

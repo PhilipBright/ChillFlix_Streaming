@@ -1,18 +1,4 @@
 import Card from "./Card";
-
-// export default function CardSlider({ data, title }) {
-//   return (
-//     <div className="">
-//       <h2>{title}</h2><br />
-//       <div className="flex">
-//       {data.map((movie) => (
-//         <Card key={movie.id} movieData={movie} />
-//       ))}
-//       </div>
-      
-//     </div>
-//   );
-// }
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -29,7 +15,7 @@ const CardSlider = ({ data, title }) => {
     <div className="w-screen h-screen bg-slate-900">
 
       
-      <div className="w-64 h-15 bg-white m-4">
+      <div className="w-64 h-15 bg-amber-400 m-4">
       <h2 className=" text-[2rem] text-center text-black font-bold font-serif">{title}</h2>
       </div>
 
