@@ -38,11 +38,6 @@ const getRawData = async (api, genres, paging) => {
   return moviesArray;
 };
 
-
-
-
-
-
 export const fetchMovies = createAsyncThunk('ChillFlix/trending', async ({ type }, thunkApi) => {
   try {
     const { ChillFlix: { genres } } = thunkApi.getState();

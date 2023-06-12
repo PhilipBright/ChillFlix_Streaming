@@ -21,7 +21,7 @@ const CardSlider = ({ data, title }) => {
 
       <Swiper
         spaceBetween={30}
-        slidesPerView={3}
+        slidesPerView={4}
         navigation
        
         scrollbar={{ draggable: true }}
