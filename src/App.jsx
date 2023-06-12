@@ -6,6 +6,7 @@ import Chillflix from './pages/Chillflix'
 import Registeration from './pages/Registeration'
 import Player from './pages/Player'
 import Movies from './pages/Movies'
+
 export default function App() {
   return (
    <BrowserRouter>
