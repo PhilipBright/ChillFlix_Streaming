@@ -1,9 +1,33 @@
 import { Button, Checkbox, FileInput, Label, Select, TextInput } from "flowbite-react";
 import regImg from '../assets/reg.svg';
 import back from '../assets/back.png'
-import { Link } from "react-router-dom";
-
+import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { firebaseAuth } from '../utils/Firebase_config';
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 export default function Registeration() {
+  const navigate = useNavigate();
+  const [registerValue, setRegisterValue] = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+  const handleSignUp = async () =>{
+    try{
+      const {email , password} = registerValue;
+      await createUserWithEmailAndPassword(firebaseAuth, email, password)
+    }
+    catch(err) {
+      console.log(err)
+    }
+
+  }
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if(currentUser){
+      navigate('/Signup');
+    }
+  })
   return (
     <div className="w-screen h-screen">
       <div className=" w-screen h-screen grid grid-cols-1 md:grid-cols-2 bg-[#69b4ff]">  
@@ -25,9 +49,17 @@ export default function Registeration() {
     <TextInput
       id="username"
       type="text"
-      placeholder=""
+      placeholder="Your Name"
+      name="username"
+      value={registerValue.username}
+
       required={true}
       shadow={true}
+      onChange={(e)=> {
+        setRegisterValue({
+          ...registerValue, [e.target.name]: e.target.value
+        })
+      }}
     />
   </div>
   <div>
@@ -40,10 +72,17 @@ export default function Registeration() {
     <TextInput
       id="email2"
       type="email"
+      name="email"
+      value={registerValue.email}
       placeholder="name@flowbite.com"
       required={true}
       shadow={true}
-    />
+      onChange={(e)=> {
+        setRegisterValue({
+          ...registerValue, [e.target.name]: e.target.value
+        })
+      }}
+      />
   </div>
   <div>
     <div className="mb-2 block">
@@ -55,8 +94,15 @@ export default function Registeration() {
     <TextInput
       id="password2"
       type="password"
+      name="password"
+      value={registerValue.password}
       required={true}
       shadow={true}
+      onChange={(e)=> {
+        setRegisterValue({
+          ...registerValue, [e.target.name]: e.target.value
+        })
+      }}
     />
   </div>
   <div>
@@ -120,7 +166,7 @@ export default function Registeration() {
       </a>
     </Label>
   </div>
-  <Button type="submit">
+  <Button onClick={handleSignUp} >
     Register new account
   </Button>
 </form>
