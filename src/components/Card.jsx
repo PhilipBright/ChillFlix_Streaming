@@ -4,18 +4,22 @@ import { useNavigate } from "react-router-dom";
 function Card({ movieData, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
-
+  
+  const handleMovieClick = () => {
+    navigate(`/movies/${movieData.id}`);
+  };
   return (
     <div
-      className={`cursor-pointer card relative overflow-hidden flex-shrink-0 ${
-        isHovered ? "scale-105" : ""
-      } transition-transform duration-300`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
-      tabIndex="0"
-    >
+    className={`cursor-pointer card relative overflow-hidden flex-shrink-0 ${
+      isHovered ? 'scale-105' : ''
+    } transition-transform duration-300`}
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    onFocus={() => setIsHovered(true)}
+    onBlur={() => setIsHovered(false)}
+    onClick={handleMovieClick}
+    tabIndex="0"
+  >
       <img src={movieData.image} alt="movie" className="rounded-xl " />
 
       {isHovered && (

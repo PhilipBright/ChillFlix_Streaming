@@ -25,7 +25,7 @@ export default function Registeration() {
   }
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if(currentUser){
-      navigate('/Signup');
+      navigate('/');
     }
   })
   return (
