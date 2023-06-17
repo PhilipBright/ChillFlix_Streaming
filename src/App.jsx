@@ -6,7 +6,7 @@ import Chillflix from './pages/Chillflix'
 import Registeration from './pages/Registeration'
 import Player from './pages/Player'
 import Movies from './pages/Movies'
-
+import MovieDetails from './pages/MovieDetails'
 export default function App() {
   return (
    <BrowserRouter>
@@ -17,6 +17,7 @@ export default function App() {
         <Route exact path='/Registeration' element={<Registeration />} />
         <Route exact path='/Movies' element={<Movies/>} />
         <Route exact path='/Player' element={<Player/>} />
+        <Route path="/movies/:id" element={<MovieDetails/>} />
       </Routes>
    </BrowserRouter>
   )
