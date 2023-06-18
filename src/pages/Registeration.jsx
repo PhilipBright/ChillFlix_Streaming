@@ -11,18 +11,46 @@ export default function Registeration() {
   const [registerValue, setRegisterValue] = useState({
     username: '',
     email: '',
-    password: ''
-  })
-  const handleSignUp = async () =>{
-    try{
-      const {email , password} = registerValue;
-      await createUserWithEmailAndPassword(firebaseAuth, email, password)
-    }
-    catch(err) {
-      console.log(err)
-    }
+    password: '',
+    subscription: '',
 
-  }
+  })
+  const handleSignUp = async () => {
+    try {
+      const { username, email, password, subscription } = registerValue;
+  
+      // Register the user in Firebase
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+  
+      // Create an object with the user data to be sent to the server
+      const userData = {
+        username,
+        email,
+        password,
+        subscription,
+      };
+  
+      const response = await fetch('api/user/Registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      if (response.ok) {
+        // User registered successfully in both Firebase and MongoDB
+        navigate('/');
+      } else {
+        // Failed to register the user in MongoDB
+        console.error('Failed to register user in MongoDB');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+  
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if(currentUser){
       navigate('/');
@@ -129,6 +157,16 @@ export default function Registeration() {
   <Select
     id="plans"
     required={true}
+    
+      
+      name="plans"
+      value={registerValue.subscription}
+      shadow={true}
+      onChange={(e)=> {
+        setRegisterValue({
+          ...registerValue, [e.target.name]: e.target.value
+        })
+      }}
   >
     <option>
       Basic Plan
