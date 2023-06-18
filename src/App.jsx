@@ -7,6 +7,7 @@ import Registeration from './pages/Registeration'
 import Player from './pages/Player'
 import Movies from './pages/Movies'
 import MovieDetails from './pages/MovieDetails'
+import MovieTrailer from './pages/MovieTrailer'
 export default function App() {
   return (
    <BrowserRouter>
@@ -18,6 +19,9 @@ export default function App() {
         <Route exact path='/Movies' element={<Movies/>} />
         <Route exact path='/Player' element={<Player/>} />
         <Route path="/movies/:id" element={<MovieDetails/>} />
+  <Route path="/movies/:id/trailer" element={MovieTrailer} />
+
+
       </Routes>
    </BrowserRouter>
   )
