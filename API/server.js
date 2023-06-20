@@ -1,14 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/UserRoute');
+const favoriteRoutes = require('./routes/FavoriteRoute');
+const registerRoutes = require('./routes/RegisterRoute')
 const app = express();
+
 
 app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/user', userRoutes);
+app.use('/api/user', favoriteRoutes);
+app.use('/api/user', registerRoutes);
 
 mongoose.connect('mongodb+srv://Philip:Myanmar2023@cluster0.cze7alr.mongodb.net/StreamingApp', {
   useNewUrlParser: true,
@@ -22,3 +25,4 @@ mongoose.connect('mongodb+srv://Philip:Myanmar2023@cluster0.cze7alr.mongodb.net/
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
+
