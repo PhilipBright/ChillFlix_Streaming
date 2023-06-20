@@ -50,34 +50,9 @@ export default function Registeration() {
       navigate('/');
     }
   });
-  const [loading, setLoading] = useState(false);
+  
 
-  const handleRegister = async () => {
-    try {
-      setLoading(true);
-
-      // Make a POST request to the registration endpoint
-      const response = await axios.post('http://localhost:3000/api/user/register', {
-        // Provide the necessary user registration data
-        username: 'John Doe',
-        email: 'johndoe@example.com',
-        password: 'password123',
-        subscription: 'Basic',
-      });
-
-      if (response.status === 201) {
-        // User registered successfully
-        console.log('User registered successfully');
-      } else {
-        // Failed to register user
-        console.error('Failed to register user');
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
   return (
     <div className="w-screen h-screen">
       <div className=" w-screen h-screen grid grid-cols-1 md:grid-cols-2 bg-[#69b4ff]">  
@@ -229,9 +204,7 @@ export default function Registeration() {
   <Button onClick={handleSignUp} >
     Register new account
   </Button>
-  <Button onClick={handleRegister} disabled={loading}>
-      {loading ? 'Registering...' : 'Register'}
-    </Button>
+  
 </form>
     </div>
       </div>

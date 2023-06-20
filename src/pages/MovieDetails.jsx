@@ -3,17 +3,34 @@ import react, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TMDB_BASE_URL } from '../utils/TMDB';
 import { API_Key } from '../utils/TMDB';
+import axios from 'axios';
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from '../utils/Firebase_config';
 
 
 
-function MovieDetails(movieData) {
+function MovieDetails({movieData}) {
   const navigate = useNavigate()
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [trailerKey, setTrailerKey] = useState(null);
+    const [email, setEmail] = useState(undefined)
+
     // Inside the component where you navigate to MovieTrailer
 
-
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if(currentUser) setEmail(currentUser.email);
+      else navigate('/Login')
+    })
+    const addToList = async () => {
+      try{
+        await axios.post("http://localhost:3000/api/user/favorite", {email, data:movieData})
+        console.log('done')
+      }
+      catch (err){
+        console.log(err)
+      }
+  }
   
     const handleVideoClick = () => {
       navigate(`/videos/${movie.id}`);
@@ -95,6 +112,7 @@ function MovieDetails(movieData) {
           {movie.production_companies.map((company) => company.name).join(', ')}
         </p>
         <div>
+        <button onClick={addToList} className="btn btn-secondary">Add to Playlist</button>
      
       <button onClick={handleVideoClick}>Watch Movie</button>
         </div>

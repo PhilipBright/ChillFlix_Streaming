@@ -6,7 +6,6 @@ const registerRoutes = require('./routes/RegisterRoute')
 const app = express();
 
 
-
 app.use(cors());
 app.use(express.json());
 
@@ -14,7 +13,7 @@ app.use(express.json());
 app.use('/api/user', favoriteRoutes);
 app.use('/api/user', registerRoutes);
 
-mongoose.connect('mongodb+srv://Philip:Myanmar2023@cluster0.cze7alr.mongodb.net/', {
+mongoose.connect('mongodb+srv://Philip:Myanmar2023@cluster0.cze7alr.mongodb.net/StreamingApp', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {

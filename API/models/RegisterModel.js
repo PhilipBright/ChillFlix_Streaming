@@ -15,10 +15,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  subscription: {
-    type: String,
-    required: true,
-  },
+ 
 });
 
 module.exports = mongoose.model("users", userSchema);
