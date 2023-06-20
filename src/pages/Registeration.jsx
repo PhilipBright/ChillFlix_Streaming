@@ -6,6 +6,7 @@ import { useState } from "react";
 import { firebaseAuth } from '../utils/Firebase_config';
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import axios from "axios";
 export default function Registeration() {
   const navigate = useNavigate();
   const [registerValue, setRegisterValue] = useState({
@@ -13,8 +14,8 @@ export default function Registeration() {
     email: '',
     password: '',
     subscription: '',
+  });
 
-  })
   const handleSignUp = async () => {
     try {
       const { username, email, password, subscription } = registerValue;
@@ -29,16 +30,10 @@ export default function Registeration() {
         password,
         subscription,
       };
-  
-      const response = await fetch('api/user/Registration', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-  
-      if (response.ok) {
+     
+      const response = await axios.post("http://localhost:3000/api/user/register", userData);
+
+      if (response.status === 201) {
         // User registered successfully in both Firebase and MongoDB
         navigate('/');
       } else {
@@ -50,12 +45,39 @@ export default function Registeration() {
     }
   };
   
-  
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if(currentUser){
+    if (currentUser) {
       navigate('/');
     }
-  })
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = async () => {
+    try {
+      setLoading(true);
+
+      // Make a POST request to the registration endpoint
+      const response = await axios.post('http://localhost:3000/api/user/register', {
+        // Provide the necessary user registration data
+        username: 'John Doe',
+        email: 'johndoe@example.com',
+        password: 'password123',
+        subscription: 'Basic',
+      });
+
+      if (response.status === 201) {
+        // User registered successfully
+        console.log('User registered successfully');
+      } else {
+        // Failed to register user
+        console.error('Failed to register user');
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="w-screen h-screen">
       <div className=" w-screen h-screen grid grid-cols-1 md:grid-cols-2 bg-[#69b4ff]">  
@@ -207,6 +229,9 @@ export default function Registeration() {
   <Button onClick={handleSignUp} >
     Register new account
   </Button>
+  <Button onClick={handleRegister} disabled={loading}>
+      {loading ? 'Registering...' : 'Register'}
+    </Button>
 </form>
     </div>
       </div>
