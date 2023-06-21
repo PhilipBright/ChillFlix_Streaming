@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
-import IceAge from '../assets/iceage.svg'
+import IceAge from '../assets/poster.jpeg'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getGenres } from '../store'
@@ -40,9 +40,7 @@ export default function Chillflix() {
       <div className='  flex'>
         <img src={IceAge} alt="" />
         <div className=' absolute bottom-60'>
-          <div>
-            <h1 className=' font-bold text-6xl font-serif text-white'>ICE AGE Collection</h1>
-          </div>
+         
           <div>
             <button onClick={() => navigate('/Player')}>play</button>
           </div>
@@ -51,7 +49,7 @@ export default function Chillflix() {
         
         
       </div>
-      <div className=' relative w-screen h-screen flex '>
+      <div className=' relative w-screen h-screen flex bg-slate-950'>
       <Slider movies={movies} className="flex " />
       </div>
       
