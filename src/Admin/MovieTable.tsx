@@ -1,19 +1,19 @@
-import Breadcrumb from './components/Breadcrumb';
+// import Breadcrumb from './components/Breadcrumb';
 
-import TableTwo from './components/TableTwo';
+// import TableTwo from './components/TableTwo';
 
-const MovieTables = () => {
-  return (
-    <>
-      <Breadcrumb pageName="Tables" />
+// const MovieTables = () => {
+//   return (
+//     <>
+//       <Breadcrumb pageName="Tables" />
 
-      <div className="flex flex-col gap-10">
+//       <div className="flex flex-col gap-10">
        
-        <TableTwo />
+//         <TableTwo />
         
-      </div>
-    </>
-  );
-};
+//       </div>
+//     </>
+//   );
+// };
 
-export default MovieTables;
+// export default MovieTables;
