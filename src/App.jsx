@@ -13,6 +13,7 @@ import Movie from '../src/Admin/components/TableTwo'
 import User from '../src/Admin/components/TableOne'
 import DefaultLayout from '../src/Admin/layout/DefaultLayout'
 import { lazy } from 'react'
+import MovieModal from './Admin/backend/MovieModal'
 
 // import Movie from '../src/Admin/components/TableTwo'
 
@@ -30,6 +31,9 @@ export default function App() {
         <Route exact path='/Player' element={<Player/>} />
         <Route path="/movies/:id" element={<MovieDetails/>} />
   <Route path="/movies/:id/trailer" element={MovieTrailer} />
+
+
+  <Route path="/MovieModal" element={<MovieModal/>} />
   
   <Route exact path='/Dashboard' element={<DefaultLayout />}>
   <Route index  element={<Dashboard/>} />
@@ -40,15 +44,7 @@ export default function App() {
   <Route exact path='/User' element={<DefaultLayout />}>
   <Route index  element={<User/>} />
   </Route>
-  {/* <Route index  element={<Movie/>} /> */}
-  {/* <Route
-            path="/Movie"
-            element={
-            
-                <Movie />
-              
-            }
-          /> */}
+
  
 
 
