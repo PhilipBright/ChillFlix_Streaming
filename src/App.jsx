@@ -12,14 +12,16 @@ import Dashboard from '../src/Admin/Dashboard'
 import Movie from '../src/Admin/components/TableTwo'
 import User from '../src/Admin/components/TableOne'
 import DefaultLayout from '../src/Admin/layout/DefaultLayout'
-import { lazy } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import MovieModal from './Admin/backend/MovieModal'
+
 
 // import Movie from '../src/Admin/components/TableTwo'
 
 
 
 export default function App() {
+
   return (
    <BrowserRouter>
       <Routes>
@@ -29,7 +31,10 @@ export default function App() {
         <Route exact path='/Registeration' element={<Registeration />} />
         <Route exact path='/Movies' element={<Movies/>} />
         <Route exact path='/Player' element={<Player/>} />
-        <Route path="/movies/:id" element={<MovieDetails/>} />
+        <Route path="/movies/:id" element={<MovieDetails  />} />
+
+     
+
   <Route path="/movies/:id/trailer" element={MovieTrailer} />
 
 
