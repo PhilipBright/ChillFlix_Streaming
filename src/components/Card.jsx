@@ -17,14 +17,18 @@ function Card({ movieData, isLiked = false }) {
     else navigate('/Login')
   })
   const addToList = async () => {
-      try{
-        await axios.post("http://localhost:3000/api/user/favorite", {email, data:movieData})
-        console.log('done')
-      }
-      catch (err){
-        console.log(err)
-      }
-  }
+    try {
+      const payload = { email, data: movieData };
+      console.log(payload);
+      const response = await axios.post("http://localhost:3000/api/user/favorite", payload);
+      console.log("Data added to the database");
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  
   return (
     <div>
        <button onClick={addToList} className="btn btn-secondary">Add to Playlist</button>
