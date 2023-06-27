@@ -31,9 +31,10 @@ function Card({ movieData, isLiked = false }) {
   
   return (
     <div>
-       <button onClick={addToList} className="btn btn-secondary">Add to Playlist</button>
+       
     
     <div
+    
     className={`cursor-pointer card relative overflow-hidden flex-shrink-0 ${
       isHovered ? 'scale-105' : ''
     } transition-transform duration-300`}
@@ -51,13 +52,8 @@ function Card({ movieData, isLiked = false }) {
           <video src={movieData.video} autoPlay loop muted className="w-full h-full object-cover" />
           <div className="card-content absolute inset-0 flex flex-col items-center justify-center text-white">
             <h3 className="text-xl font-semibold mb-2">{movieData.name}</h3>
-            <div className="button-container">
-              <button
-                className="btn btn-primary mr-2"
-                onClick={() => navigate("/player")}
-              >
-                Watch Now
-              </button>
+            <div className="button-container z-30 block">
+            <button onClick={addToList} className="btn btn-secondary z-50 ">Add to Playlist</button>
              
             </div>
           </div>

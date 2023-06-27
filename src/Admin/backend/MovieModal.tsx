@@ -169,7 +169,7 @@ export default function MovieModal() {
             type="submit"
             name="addMovie"
             color="gray"
-            className="bg-blue-700 text-white"
+            className="bg-blue-700 text-gray-800 dark:text-white"
           >
             Confirm
           </Button>

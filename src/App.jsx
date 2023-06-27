@@ -9,9 +9,11 @@ import Movies from './pages/Movies'
 import MovieDetails from './pages/MovieDetails'
 import MovieTrailer from './pages/MovieTrailer'
 import Dashboard from '../src/Admin/Dashboard'
-import Movie from '../src/Admin/components/TableTwo'
-import User from '../src/Admin/components/TableOne'
+import Movie from '../src/Admin/MovieTable'
+import User from '../src/Admin/UserTable'
+import  Subscript  from './Admin/SubscriptionTable'
 import DefaultLayout from '../src/Admin/layout/DefaultLayout'
+import Purchase from './Admin/PurchaseTable'
 import { lazy, useEffect, useState } from 'react'
 import MovieModal from './Admin/backend/MovieModal'
 
@@ -48,6 +50,12 @@ export default function App() {
   </Route>
   <Route exact path='/User' element={<DefaultLayout />}>
   <Route index  element={<User/>} />
+  </Route>
+  <Route exact path='/Subscription' element={<DefaultLayout />}>
+  <Route index  element={<Subscript/>} />
+  </Route>
+  <Route exact path='/Purchase' element={<DefaultLayout />}>
+  <Route index  element={<Purchase/>} />
   </Route>
 
  
