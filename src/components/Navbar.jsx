@@ -9,8 +9,7 @@ export default function Navbar({ isScrolled }) {
   const navigate = useNavigate();
   const links = [
     { name: 'Home', link: '/' },
-    { name: 'TV shows', link: '/tv' },
-    { name: 'Movies', link: '/movies' },
+    { name: 'ChillFlix Movies', link: '/movies' },
     { name: 'My List', link: '/mylist' }
   ];
   const [isTop, setIsTop] = useState(true);

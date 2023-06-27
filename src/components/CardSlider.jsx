@@ -12,7 +12,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const CardSlider = ({ data, title }) => {
   return (
-    <div className="w-screen h-screen bg-slate-900" >
+    <div className="w-screen h-screen bg-black" >
 
       
       <div className="w-64 h-15 bg-amber-400 m-4">

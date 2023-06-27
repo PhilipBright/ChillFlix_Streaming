@@ -8,7 +8,7 @@ export default function Slider({ movies }) {
   };
 
   return (
-    <div className="flex flex-col  ">
+    <div className="flex flex-col w-screen h-screen ">
       <CardSlider data={getMoviesFromRange(0, 10)} title="Trending Now" />
       <CardSlider data={getMoviesFromRange(10, 20)} title="New Releases" />
       <CardSlider data={getMoviesFromRange(20, 30)} title="Blockbuster Movies" />
