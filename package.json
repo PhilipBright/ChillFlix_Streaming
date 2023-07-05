@@ -23,6 +23,7 @@
     "jsvectormap": "^1.5.3",
     "lucide-react": "^0.252.0",
     "mongoose": "^7.3.0",
+    "multer": "^1.4.5-lts.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-datepicker": "^4.14.1",

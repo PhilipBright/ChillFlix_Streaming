@@ -37,7 +37,7 @@ export default function Navbar({ isScrolled }) {
   }, []);
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-10`} style={{ backgroundColor: isTop ? 'transparent' : '#070606', transition: 'background-color 0.5s ease' }}>
+    <div className={`fixed top-0 left-0 w-full z-30`} style={{ backgroundColor: isTop ? 'transparent' : '#070606', transition: 'background-color 0.5s ease' }}>
       <nav className={`flex justify-between items-center ml-5 mr-5 navbar-container`}>
         <div className='flex gap-10'>
           <div>

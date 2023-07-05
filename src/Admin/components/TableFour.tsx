@@ -32,20 +32,20 @@ const TableFour = () => {
         <div className="col-span-1 flex items-center">
           <p className="font-medium">Price</p>
         </div>
-        <div className="col-span-1 hidden sm:flex  items-center ">
-          <p className="font-medium"></p>
+        <div className="col-span-1  flex items-center">
+          <p className="font-medium">Feature One</p>
+        </div>
+        <div className="col-span-1  flex items-center">
+          <p className="font-medium">Feature Two</p>
+        </div>
+        <div className="col-span-1  flex items-center">
+          <p className="font-medium">Feature Three</p>
         </div>
         <div className="col-span-1 ml-4 flex items-center">
-          <p className="font-medium"></p>
+          <p className="font-medium">Feature Four</p>
         </div>
-        <div className="col-span-1 hidden sm:flex items-center">
-          <p className="font-medium">Date</p>
-        </div>
-        <div className="col-span-1 hidden sm:flex items-center">
-          <p className="font-medium">Company</p>
-        </div>
-        <div className="col-span-1 flex px-4 sm:px-8 items-center">
-          <p className="font-medium">Trailer</p>
+        <div className="col-span-1 ml-4 flex items-center">
+          <p className="font-medium">Feature Five</p>
         </div>
         <div className="col-span-1 flex px-4 sm:px-8 items-center">
           <p className="font-medium">Action</p>
