@@ -15,6 +15,7 @@ app.use('/api/user', favoriteRoutes);
 app.use('/api/user', registerRoutes);
 app.use('/api/user', addMovieRoutes);
 
+
 mongoose.connect('mongodb+srv://Philip:Myanmar2023@cluster0.cze7alr.mongodb.net/StreamingApp', {
   useNewUrlParser: true,
   useUnifiedTopology: true

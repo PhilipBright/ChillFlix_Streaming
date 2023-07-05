@@ -2,6 +2,8 @@ import { configureStore, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { API_Key, TMDB_BASE_URL } from "../utils/TMDB";
 import axios from 'axios';
 
+import { data } from "autoprefixer";
+
 const initialState = {
   movies: [],
   genresLoaded: false,
@@ -38,12 +40,15 @@ const getRawData = async (api, genres, paging) => {
   return moviesArray;
 };
 
-export const fetchMovies = createAsyncThunk('ChillFlix/trending', async ({ type }, thunkApi) => {
+export const fetchMovies = createAsyncThunk('ChillFlix/trending', async ({ type, email }, thunkApi) => {
   try {
     const { ChillFlix: { genres } } = thunkApi.getState();
     const moviesData = await getRawData(`${TMDB_BASE_URL}trending/${type}/week?api_key=${API_Key}`, genres, true);
-    console.log(moviesData); // Check the returned moviesData
+ 
+
+  // Check the returned moviesData
     return moviesData;
+
   } catch (error) {
     console.log('An error occurred while fetching movies:', error);
     throw error;
@@ -51,9 +56,21 @@ export const fetchMovies = createAsyncThunk('ChillFlix/trending', async ({ type 
 });
 
 
+
+export const getUsersLikedMovies = createAsyncThunk(
+  "ChillFlix/getLiked",
+  async (email) => {
+    const response = await axios.get(`http://localhost:3000/api/user/liked/${email}`);
+    return response.data.movies;
+  }
+);
+
+ 
+
 const ChillFlixSlice = createSlice({
   name: "ChillFlix",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getGenres.fulfilled, (state, action) => {
       state.genres = action.payload;
@@ -63,9 +80,28 @@ const ChillFlixSlice = createSlice({
       state.movies = action.payload;
       console.log(action.payload); // Check the movies data
     });
+
+    builder.addCase(getUsersLikedMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
+      console.log(action.payload); // Check the movies data
+    });
     
   },
 });
+
+
+// export const removeMovieFromLiked = createAsyncThunk(
+//   "ChillFlix/deleteLiked",
+//   async ({ movieId, email }) => {
+//     const {
+//       data: { movies },
+//     } = await axios.put("http://localhost:3000/api/user/remove", {
+//       email,
+//       movieId,
+//     });
+//     return movies;
+//   }
+// );
 
 export const getGenres = createAsyncThunk("ChillFlix/genres", async () => {
   const { data: { genres } } = await axios.get(`${TMDB_BASE_URL}/genre/movie/list?api_key=${API_Key}`);

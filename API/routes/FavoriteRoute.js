@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const favoriteController = require("../controllers/FavoriteController");
+const { addToLikedMovies,
+    getLikedMovies,
+   } = require("../controllers/FavoriteController");
 
-router.post("/favorite", favoriteController.addToLikedMovies);
+router.get("/liked/:email", getLikedMovies);
+router.post("/favorite", addToLikedMovies);
+// router.put("/remove", removeFromLikedMovies);
 
 module.exports = router;

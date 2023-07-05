@@ -12,7 +12,7 @@ export default function MovieModal() {
   const [date, setDate] = useState('');
   const [company, setCompany] = useState('');
   const [trailer, setTrailer] = useState('');
-
+  
   const navigate = useNavigate()
   
   const handleFormSubmit = async (event) => {

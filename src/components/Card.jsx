@@ -31,7 +31,8 @@ function Card({ movieData, isLiked = false }) {
   
   return (
     <div>
-       
+                   <button onClick={addToList} className="btn btn-secondary z-50 text-white">Add to Playlist</button>
+
     
     <div
     
@@ -53,7 +54,6 @@ function Card({ movieData, isLiked = false }) {
           <div className="card-content absolute inset-0 flex flex-col items-center justify-center text-white">
             <h3 className="text-xl font-semibold mb-2">{movieData.name}</h3>
             <div className="button-container z-30 block">
-            <button onClick={addToList} className="btn btn-secondary z-50 ">Add to Playlist</button>
              
             </div>
           </div>

@@ -14,6 +14,7 @@ import User from '../src/Admin/UserTable'
 import  Subscript  from './Admin/SubscriptionTable'
 import DefaultLayout from '../src/Admin/layout/DefaultLayout'
 import Purchase from './Admin/PurchaseTable'
+import Mylist from './pages/UserLiked'
 import { lazy, useEffect, useState } from 'react'
 import MovieModal from './Admin/backend/MovieModal'
 
@@ -33,6 +34,7 @@ export default function App() {
         <Route exact path='/Registeration' element={<Registeration />} />
         <Route exact path='/Movies' element={<Movies/>} />
         <Route exact path='/Player' element={<Player/>} />
+        <Route exact path="/mylist" element={<Mylist />} />
         <Route path="/movies/:id" element={<MovieDetails  />} />
 
      
