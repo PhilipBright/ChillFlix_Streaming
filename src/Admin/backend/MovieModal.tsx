@@ -5,7 +5,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export default function MovieModal() {
-  const [poster, setPoster] = useState('');
+  // const [poster, setPoster] = useState('');
+  const [poster, setPoster] = useState<string | File>('');
+
   const [movieName, setMovieName] = useState('');
   const [overview, setOverview] = useState('');
   const [genre, setGenre] = useState('');
@@ -15,26 +17,55 @@ export default function MovieModal() {
   
   const navigate = useNavigate()
   
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
     
 
-    const formData = {
-      movieName,
-      poster,
-      overview,
-      genre,
-      date,
-      company,
-      trailer,
-    };
+  //   const formData = {
+  //     movieName,
+  //     poster,
+  //     overview,
+  //     genre,
+  //     date,
+  //     company,
+  //     trailer,
+  //   };
 
+  //   try {
+  //     const response = await axios.post('http://localhost:3000/api/user/addMovie', formData);
+
+  //     if (response.status === 201) {
+  //       // console.log('Movie added successfully');
+  //       navigate('/Movie')
+  //     } else {
+  //       console.error('Failed to add movie');
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append('movieName', movieName);
+    formData.append('poster', poster);
+    formData.append('overview', overview);
+    formData.append('genre', genre);
+    formData.append('date', date);
+    formData.append('company', company);
+    formData.append('trailer', trailer);
+  
     try {
-      const response = await axios.post('http://localhost:3000/api/user/addMovie', formData);
-
+      const response = await axios.post('http://localhost:3000/api/user/addMovie', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set the content type to multipart/form-data
+        },
+      });
+  
       if (response.status === 201) {
-        // console.log('Movie added successfully');
-        navigate('/Movie')
+        navigate('/Movie');
       } else {
         console.error('Failed to add movie');
       }
@@ -42,7 +73,7 @@ export default function MovieModal() {
       console.error(err);
     }
   };
-
+  
   const handleDateChange = (date) => {
     setDate(date);
   };
@@ -123,12 +154,26 @@ export default function MovieModal() {
               <label className="mb-3 block text-black ">
                 Movie Poster
               </label>
-              <input
+              {/* <input
                 value={poster}
                 onChange={(event) => setPoster(event.target.value)}
                 type="file"
                 className="w-full text-black cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-medium outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
-              />
+              /> */}
+              <input
+  type="file"
+  name='poster'
+  onChange={(event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setPoster(file);
+    }
+  }}
+  
+  className="w-full text-black cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-medium outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
+/>
+
+
             </div>
           </div>
           <div className="2">

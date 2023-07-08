@@ -1,34 +1,83 @@
 const Movie = require('../models/MovieModel');
 
 
-module.exports.addMovie = async (req, res) => {
-  try {
+// module.exports.addMovie = async (req, res) => {
+//   try {
    
-    const {  movieName, company, description, genre, date,poster,  trailer } = req.body;
+//     const {  movieName, company, description, genre, date,poster,  trailer } = req.body;
 
   
-    const movie = new Movie({
+//     const movie = new Movie({
       
+//       movieName,
+//       company,
+//       description,
+//       genre,
+//       date,
+      
+//       poster,
+//       trailer
+//     });
+
+  
+//     const savedMovie = await movie.save();
+
+ 
+//     res.status(201).json(savedMovie);
+//   } catch (error) {
+    
+//     console.error(error);
+//     res.status(500).json({ error: 'Failed to add the movie' });
+//   }
+ 
+
+// };\
+module.exports.addMovie = async (req, res) => {
+  try {
+    const { movieName, company, overview, genre, date, trailer } = req.body;
+    const poster = req.file.filename; // Get the filename of the uploaded poster
+
+    const movie = new Movie({
       movieName,
       company,
-      description,
+      overview,
       genre,
       date,
-      
       poster,
       trailer
     });
 
-  
     const savedMovie = await movie.save();
 
- 
     res.status(201).json(savedMovie);
   } catch (error) {
-    
     console.error(error);
     res.status(500).json({ error: 'Failed to add the movie' });
   }
- 
-
 };
+module.exports.getAllMovies = async (req, res) => {
+  try {
+    const movies = await Movie.find();
+    res.status(200).json(movies);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch movies' });
+  }
+};
+
+exports.getMovieById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const movie = await Movie.findById(id);
+    if (!movie) {
+      return res.status(404).json({ message: 'Movie not found' });
+    }
+
+    res.json(movie);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
