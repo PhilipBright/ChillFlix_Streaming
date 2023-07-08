@@ -16,7 +16,7 @@ import DefaultLayout from '../src/Admin/layout/DefaultLayout'
 import Purchase from './Admin/PurchaseTable'
 import Mylist from './pages/UserLiked'
 import MovieListDetail from './pages/MovieListDetails';
-
+import Payment from './pages/Payment'
 
 import { lazy, useEffect, useState } from 'react'
 import MovieModal from './Admin/backend/MovieModal'
@@ -42,6 +42,7 @@ export default function App() {
         <Route exact path="/movies/:id/trailer" element={<MovieTrailer />} />
 
         <Route path="/movies/db/:id" element={<MovieListDetail />} />
+        <Route exact path="/payment" element={<Payment />} />
 
         <Route path="/Player" element={<Player />} />
         <Route path="/mylist" element={<Mylist />} />
