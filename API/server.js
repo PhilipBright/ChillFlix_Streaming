@@ -56,7 +56,7 @@ app.use('/api/user', favoriteRoutes);
 app.use('/api/user', registerRoutes);
 app.use('/api/user', addMovieRoutes);
 app.use('/api/user', wishlistRoutes);
-app.use('/api/user', PurchaseRoutes)
+app.use('/api/user', PurchaseRoutes);
 
 app.use('/uploads', express.static('public/uploads'));
 
@@ -71,6 +71,12 @@ mongoose
   .catch((error) => {
     console.error('Failed to connect to MongoDB', error);
   });
+
+
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err);
+  res.status(500).json({ message: 'Internal server error' });
+});
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');

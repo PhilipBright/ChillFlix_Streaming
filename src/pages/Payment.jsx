@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function PaymentPage() {
   const location = useLocation();
   const subscription = new URLSearchParams(location.search).get('subscription');
+  const username = new URLSearchParams(location.search).get('username');
+
   const navigate = useNavigate();
 
   const [card, setCard] = useState(true);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [registerValue, setRegisterValue] = useState({
-    username: 'hein',
-    email: '',
-    password: '',
-    subscription: 'basic', // Default subscription option
+    username: '',
+    subscription: '',
+   
   });
   const handleCardToggle = () => {
     setCard(true);
@@ -22,18 +23,29 @@ export default function PaymentPage() {
   const handlePayPalToggle = () => {
     setCard(false);
   };
+  useEffect(() => {
+    setRegisterValue({
+      username: username || '',
+      subscription: subscription || '',
+    });
+  }, []);
+  
 
   const handlePayment = async () => {
     // Perform payment logic
-    const { username, email, password, subscription } = registerValue;
-  
+    const { username, subscription } = registerValue;
+    
+    console.log('Username:', username);
+    console.log('Subscription:', subscription);
+
     // Add the purchase details to the database
     const purchaseData = {
-      username: registerValue.username,
-      subscription,
+      username: username,
+      subscription: subscription,
       paymentMethod: card ? 'Card' : 'PayPal',
       date: new Date().toISOString(),
     };
+    
   
     try {
       // Send the purchase data to your backend API
@@ -53,6 +65,7 @@ export default function PaymentPage() {
   return (
     <div>
       <h1>Payment - {subscription}</h1>
+      <h1>username - {username}</h1>
       
       <section className="antialiased bg-gray-100 text-gray-600 min-h-screen p-4">
         <div className="h-full">

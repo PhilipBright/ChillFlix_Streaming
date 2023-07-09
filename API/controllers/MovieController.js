@@ -1,4 +1,5 @@
 const Movie = require('../models/MovieModel');
+const { isValidObjectId } = require('mongoose');
 
 
 // module.exports.addMovie = async (req, res) => {
@@ -65,10 +66,29 @@ module.exports.getAllMovies = async (req, res) => {
   }
 };
 
+// exports.getMovieById = async (req, res) => {
+//   const { id } = req.params;
+
+//   try {
+//     const movie = await Movie.findById(id);
+//     if (!movie) {
+//       return res.status(404).json({ message: 'Movie not found' });
+//     }
+
+//     res.json(movie);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// };
 exports.getMovieById = async (req, res) => {
   const { id } = req.params;
 
   try {
+    if (!isValidObjectId(id)) {
+      return res.status(400).json({ message: 'Invalid movie ID' });
+    }
+
     const movie = await Movie.findById(id);
     if (!movie) {
       return res.status(404).json({ message: 'Movie not found' });
@@ -80,4 +100,5 @@ exports.getMovieById = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
