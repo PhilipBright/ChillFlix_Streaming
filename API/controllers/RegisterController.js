@@ -16,3 +16,13 @@ const RegisterController = async (req, res) => {
 };
 
 module.exports = RegisterController;
+
+module.exports.getRegister = async (req, res) => {
+  try{
+    const register = await User.find()
+    res.status(200).json(register)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({error: 'error fetching data'})
+  }
+}

@@ -19,7 +19,7 @@ const upload = multer({ storage });
 
 router.post('/addMovie', upload.single('poster'), MovieController.addMovie);
 router.get('/movies/db', MovieController.getAllMovies);
-router.get('/:id', MovieController.getMovieById);
+// router.get('/:id', MovieController.getMovieById);
 
 // Fetch movie details by ID
 router.get('/movies/db/:id', async (req, res) => {

@@ -44,7 +44,7 @@ export default function Registration() {
   
       if (response.status === 201) {
         // User registered successfully in both Firebase and MongoDB
-        const paymentUrl = `/payment?subscription=${subscription}`;
+        const paymentUrl = `/payment?subscription=${subscription}&username=${username}`;
         navigate(paymentUrl);
       } else {
         // Failed to register the user in MongoDB

@@ -31,18 +31,18 @@ export default function UserLiked() {
     }
   }, [email]);
 
-  useEffect(() => {
-    const fetchWishlist = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/user/wishlist'); // Update the endpoint according to your backend setup
-        setWishlist(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchWishlist = async () => {
+  //     try {
+  //       const response = await axios.get('http://localhost:3000/api/user/wishlist'); // Update the endpoint according to your backend setup
+  //       setWishlist(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchWishlist();
-  }, []);
+  //   fetchWishlist();
+  // }, []);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);

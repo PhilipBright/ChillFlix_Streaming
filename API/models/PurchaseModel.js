@@ -15,10 +15,9 @@ const purchaseSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
+    required: true
   },
 });
 
-const Purchase = mongoose.model('Purchase', purchaseSchema);
+module.exports = mongoose.model('Purchase', purchaseSchema);
 
-module.exports = Purchase;
