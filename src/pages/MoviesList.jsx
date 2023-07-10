@@ -47,6 +47,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import MovieCard from './MovieCard';
+import Navbar from '../components/Navbar'
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -69,9 +70,17 @@ const MovieList = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
   return (
-    <div>
+    
+    <div className='w-screen h-screen bg-black'>
+      <div className=''>
+        <Navbar isScrolled={isScrolled} />
+        </div>
+        <div className='pt-16'>
       <Swiper
         slidesPerView={4}
         centeredSlides={false}
@@ -93,6 +102,7 @@ const MovieList = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      </div>
     </div>
   );
 };
