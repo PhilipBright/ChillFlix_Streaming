@@ -77,31 +77,32 @@ const TableTwo = () => {
         </div>
       </div>
       {movies.map((movie) => (
-      <div key={movie._id} className="grid grid-cols-5 px-6 border-t border-stroke py-4.5  dark:border-strokedark sm:grid-cols-9 md:px-6 2xl:px-7.5">
-      <div className="col-span-1 flex items-center">
-          <p className="text-sm">{movie._id}</p>
+        <div key={movie._id} className="grid grid-cols-5 px-6 border-t border-stroke py-4.5 dark:border-strokedark sm:grid-cols-9 md:px-6 2xl:px-7.5">
+        <div className="col-span-1 flex items-center">
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie._id}</p>
         </div>
-        <div className=" col-span-1 flex items-center ">
-        <img src={`http://localhost:3000/uploads/${movie.poster}`} alt="Product" className='w-16 h-16 rounded'  />
+        <div className="col-span-1 flex items-center">
+          <img src={`http://localhost:3000/uploads/${movie.poster}`} alt="Product" className="w-16 h-16 rounded" />
         </div>
-        <div className="col-span-1 flex items-center ">
-          <p className="text-sm ">{movie.movieName}</p>
-        </div>
-        <div className="col-span-1 hidden sm:flex  items-center ">
-          <p className="text-sm">{movie.overview}</p>
-        </div>
-        <div className="col-span-1 ml-4 flex items-center">
-          <p className="text-sm">{movie.genre}</p>
-        </div>
-        <div className="col-span-1 hidden sm:flex  items-center">
-          <p className="text-sm">{movie.date}</p>
+        <div className="col-span-1 flex items-center">
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie.movieName}</p>
         </div>
         <div className="col-span-1 hidden sm:flex items-center">
-          <p className="text-sm">{movie.company}</p>
+          <p className="text-sm line-clamp-2">{movie.overview}</p>
+        </div>
+        <div className="col-span-1 ml-4 flex items-center">
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie.genre}</p>
+        </div>
+        <div className="col-span-1 hidden sm:flex items-center">
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie.date}</p>
+        </div>
+        <div className="col-span-1 hidden sm:flex items-center">
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie.company}</p>
         </div>
         <div className="col-span-1 ml-4 hidden sm:flex items-center">
-          <p className="text-sm">{movie.trailer}</p>
+          <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">{movie.trailer}</p>
         </div>
+      
         <div className="col-span-1 flex items-center">
         <div className="flex items-center px-4 sm:px-8 space-x-3.5">
                  

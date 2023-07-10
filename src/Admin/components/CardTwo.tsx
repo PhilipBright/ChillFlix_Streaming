@@ -1,7 +1,55 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const CardTwo = () => {
+  const [order, setOrder] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/user/order');
+        setOrder(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  const getSubscriptionPrice = (subscriptionType) => {
+    switch (subscriptionType) {
+      case 'basic':
+        return 10;
+      case 'premium':
+        return 50;
+      case 'business':
+        return 100;
+      default:
+        return 0;
+    }
+  };
+
+  useEffect(() => {
+    let calculatedTotal = 0;
+
+    order.forEach((plan) => {
+      const { subscription } = plan;
+      const price = getSubscriptionPrice(subscription);
+      calculatedTotal += price;
+    });
+
+    setTotal(calculatedTotal);
+  }, [order]);
+
+  console.log(total);
+
+
   return (
     <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
+      {/* {subscription}: ${price} */}
         <svg
           className="fill-primary dark:fill-white"
           width="20"
@@ -24,12 +72,17 @@ const CardTwo = () => {
           />
         </svg>
       </div>
+      
 
       <div className="mt-4 flex items-end justify-between">
         <div>
-          <h4 className="text-title-md font-bold text-black dark:text-white">
-            $45,2K
+     
+        
+          <h4  className="text-title-md font-bold text-black dark:text-white">
+           ${total.toFixed(2)}
           </h4>
+     
+          
           <span className="text-sm font-medium">Total Profit</span>
         </div>
 

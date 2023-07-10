@@ -81,6 +81,9 @@ const MovieListDetails = () => {
       if(currentUser) setEmail(currentUser.email);
       else navigate('/Login')
     })
+    const handleTrailerClick = () => {
+      navigate(`/movies/${id}/trailer`);
+    };
     // const addToWishlist = async (movieId) => {
     //   try {
     //     const payload = { movieId };
@@ -131,7 +134,7 @@ const MovieListDetails = () => {
             <span className="ml-2">PLAY</span>
           </button>
 
-          <button className="flex items-center justify-center font-bold text-lg px-6 h-14 rounded-md cursor-pointer bg-[rgba(0,0,0,0.3)] text-white border border-white">
+          <button onClick={handleTrailerClick} className="flex items-center justify-center font-bold text-lg px-6 h-14 rounded-md cursor-pointer bg-[rgba(0,0,0,0.3)] text-white border border-white">
             <img className="w-8" src="https://drive.google.com/uc?id=1iD6VqHIyaeBe2V-c3o2U5YKl5K5n37Zi" alt="" />
             <span className="ml-2">Trailer</span>
           </button>

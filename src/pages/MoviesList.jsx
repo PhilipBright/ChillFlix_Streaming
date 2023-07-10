@@ -74,7 +74,7 @@ const MovieList = () => {
     <div>
       <Swiper
         slidesPerView={4}
-        centeredSlides={true}
+        centeredSlides={false}
         spaceBetween={30}
         grabCursor={true}
         pagination={{

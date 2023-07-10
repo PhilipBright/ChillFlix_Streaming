@@ -59,7 +59,7 @@ const TableThree = () => {
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
                     {purchase.subscription}
-                    {purchase.paymentMethod}
+                    
                   </p>
                   
                 </td>
