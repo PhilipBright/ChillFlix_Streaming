@@ -1,4 +1,21 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const CardFour = () => {
+  const [userCount, setUserCount] = useState(0);
+
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/user/count');
+        setUserCount(response.data.count);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserCount();
+  }, []);
   return (
     <div className="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
@@ -28,7 +45,7 @@ const CardFour = () => {
       <div className="mt-4 flex items-end justify-between">
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
-            3.456
+            {userCount}
           </h4>
           <span className="text-sm font-medium">Total Users</span>
         </div>

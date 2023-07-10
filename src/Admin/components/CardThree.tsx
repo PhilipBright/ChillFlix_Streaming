@@ -24,9 +24,9 @@ const CardThree = () => {
       <div className="mt-4 flex items-end justify-between">
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
-            2.450
+            60
           </h4>
-          <span className="text-sm font-medium">Total Product</span>
+          <span className="text-sm font-medium">Total TMDB Movies </span>
         </div>
 
         <span className="flex items-center gap-1 text-sm font-medium text-meta-3">

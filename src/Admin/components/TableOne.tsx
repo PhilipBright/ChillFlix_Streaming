@@ -7,6 +7,7 @@ import BrandFive from '../images/brand/brand-05.svg';
 import { PlusCircle } from "lucide-react"
 import axios from 'axios';
 
+
 const TableOne = () => {
 const [user, setUser] = useState([])
   useEffect(() => {
@@ -34,7 +35,7 @@ const [user, setUser] = useState([])
 
 
       <div className="flex flex-col">
-      <div className="grid grid-cols-5 px-6 border-t border-stroke py-4.5  dark:border-strokedark sm:grid-cols-6 md:px-6 2xl:px-7.5">
+      <div className="grid grid-cols-5 px-6 border-t border-stroke py-4.5  dark:border-strokedark sm:grid-cols-5 md:px-6 2xl:px-7.5">
       <div className="col-span-1 lg:ml-0 ml-[-2rem] flex items-center">
           <p className="font-medium">ID</p>
         </div>
@@ -51,14 +52,14 @@ const [user, setUser] = useState([])
           <p className="font-medium">Password</p>
         </div>
        
-        <div className="col-span-1 lg:ml-4 ml-20 flex px-4 sm:px-8 items-center">
+        {/* <div className="col-span-1 lg:ml-4 ml-20 flex px-4 sm:px-8 items-center">
           <p className="font-medium">Status</p>
-        </div>
+        </div> */}
       </div>
       {user.map((users) => (
-          <div key={users._id} className="grid grid-cols-5 px-6 border-t border-stroke py-4.5 dark:border-strokedark sm:grid-cols-6 md:px-6 2xl:px-7.5">
+          <div key={users._id} className="grid grid-cols-5 px-6 border-t border-stroke py-4.5 dark:border-strokedark sm:grid-cols-5 md:px-6 2xl:px-7.5">
             <div className="col-span-1 lg:ml-0 ml-[-2rem] flex items-center">
-              <p className="text-sm">{users._id}</p>
+              <p className="text-sm whitespace-nowrap overflow-hidden overflow-ellipsis mr-16">{users._id}</p>
             </div>
             <div className="col-span-1 hidden sm:flex items-center">
               <img src={BrandFour} alt="Product" className="w-16 h-16" />
@@ -70,15 +71,15 @@ const [user, setUser] = useState([])
               <p className="text-sm">{users.email}</p>
             </div>
             <div className="col-span-1 hidden lg:ml-4 sm:flex items-center">
-              <p className="text-sm">********</p>
+              <p className="text-sm">***********</p>
             </div>
-            <div className="col-span-1 flex ml-4 items-center">
+            {/* <div className="col-span-1 flex ml-4 items-center">
               <div className="flex items-center sm:px-8 space-x-3.5">
                 <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
                   Online
                 </p>
                 </div>
-        </div>
+        </div> */}
       </div>
       ))}
         </div>

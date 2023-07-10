@@ -7,6 +7,7 @@ import axios from 'axios';
 import { onAuthStateChanged } from 'firebase/auth';
 import { firebaseAuth } from '../utils/Firebase_config';
 import Navbar from '../components/Navbar';
+import YouTube from 'react-youtube';
 
 
 
@@ -23,6 +24,9 @@ function MovieDetails({movieData}) {
       if(currentUser) setEmail(currentUser.email);
       else navigate('/Login')
     })
+    const handleTrailerClick = () => {
+      navigate(`/trailer/${id}`);
+    };
     // const addToList = async () => {
     //   try {
     //     const payload = { email, data: movieData };
@@ -115,7 +119,7 @@ function MovieDetails({movieData}) {
        <span className="ml-2">PLAY</span>
      </button>
 
-        <button className="flex items-center justify-center font-bold text-lg px-6 h-14 rounded-md cursor-pointer bg-[rgba(0,0,0,0.3)] text-white border border-white">
+        <button onClick={handleTrailerClick} className="flex items-center justify-center font-bold text-lg px-6 h-14 rounded-md cursor-pointer bg-[rgba(0,0,0,0.3)] text-white border border-white">
            <img className="w-8" src="https://drive.google.com/uc?id=1iD6VqHIyaeBe2V-c3o2U5YKl5K5n37Zi" alt="" />
          <span className="ml-2">Trailer</span>
         </button>

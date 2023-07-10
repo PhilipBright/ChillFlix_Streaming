@@ -26,3 +26,12 @@ module.exports.getRegister = async (req, res) => {
     res.status(500).json({error: 'error fetching data'})
   }
 }
+module.exports.getUserCount = async (req, res) => {
+  try {
+    const userCount = await User.countDocuments();
+    res.status(200).json({ count: userCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get user count' });
+  }
+};

@@ -77,6 +77,12 @@ app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
   res.status(500).json({ message: 'Internal server error' });
 });
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "script-src 'self' 'wasm-unsafe-eval' 'inline-speculation-rules' https://apis.google.com/js/api.js;");
+
+  next();
+});
+
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');

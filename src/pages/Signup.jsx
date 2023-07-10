@@ -5,7 +5,7 @@ import { Button } from 'flowbite-react';
 import Pricing from '../components/Pricing'
 import Collaspe from '../components/Collaspe';
 import FooterNav from '../components/FooterNav';
-
+import Image from '../components/Images';
 export default function Signup() {
   return (
     <div className=''>
@@ -31,12 +31,17 @@ export default function Signup() {
         
       </div>
 
+     
+      <div className='w-screen h-screen'>
+        <Image/>
+      </div>
       <div>
         <Pricing />
       </div>
       <div className=' w-full h-full p-10'>
       <Collaspe />
       </div>
+      
       <div>
         
       </div>
