@@ -19,6 +19,8 @@ const upload = multer({ storage });
 
 router.post('/addMovie', upload.single('poster'), MovieController.addMovie);
 router.get('/movies/db', MovieController.getAllMovies);
+router.delete('/movies/db/delete/:id', MovieController.deleteMovie);
+
 // router.get('/:id', MovieController.getMovieById);
 
 // Fetch movie details by ID

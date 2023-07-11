@@ -8,15 +8,10 @@ export default function Player() {
   return (
     <div className="w-screen h-screen bg-black">
       <div className="">
-      <iframe
-          title="Video Player"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/oWO7Gmx28hU"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        ></iframe>
+        <video width="560" height="315" controls>
+          <source src="../assets/movie.mp4" type="video/mp4" />
+          
+        </video>
       </div>
     </div>
   );

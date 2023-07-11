@@ -76,7 +76,7 @@ export default function Registration() {
           </div>
           <form className="flex flex-col gap-4" onSubmit={handleSignUp}>
             <div>
-              <div className="mb-2 block">
+              <div className="mb-2 block mt-8">
                 <Label htmlFor="username" value="Username" />
               </div>
               <TextInput
@@ -165,23 +165,12 @@ export default function Registration() {
                   });
                 }}
               >
-                <option value="basic">Basic Plan</option>
-                <option value="premium">Premium Plan</option>
-                <option value="business">Business Plan</option>
+                <option value="Basic">Basic Plan</option>
+                <option value="Premium">Premium Plan</option>
+                <option value="Business">Business Plan</option>
               </Select>
             </div>
-            <div id="fileUpload">
-              <div className="mb-2 block">
-                <Label
-                  htmlFor="file"
-                  value="Upload Profile Picture"
-                />
-              </div>
-              <FileInput
-                id="file"
-                helperText="A profile picture is useful to confirm you are logged into your account"
-              />
-            </div>
+          
             <div className="flex items-center gap-2 pt-4">
               <Checkbox id="agree" />
               <Label htmlFor="agree">
@@ -196,7 +185,7 @@ export default function Registration() {
             </div>
             
             {/* <Link to={`/payment?subscription=${registerValue.subscription}`}> */}
-  <Button onClick={handleSignUp}>
+  <Button className="border-black bg-blue-500 mt-8" onClick={handleSignUp}>
     Register new account
   </Button>
 {/* </Link> */}

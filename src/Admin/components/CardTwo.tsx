@@ -20,11 +20,11 @@ const CardTwo = () => {
 
   const getSubscriptionPrice = (subscriptionType) => {
     switch (subscriptionType) {
-      case 'basic':
+      case 'Basic':
         return 10;
-      case 'premium':
+      case 'Premium':
         return 50;
-      case 'business':
+      case 'Business':
         return 100;
       default:
         return 0;
