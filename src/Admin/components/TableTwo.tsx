@@ -25,6 +25,18 @@ const TableTwo = () => {
 
    fetchMovies();
  }, []);
+ const handleDeleteMovie = async (movieId: string) => {
+  try {
+    await axios.delete(`http://localhost:3000/api/user/movies/db/delete/${movieId}`);
+    setMovies(movies.filter((movie) => movie._id !== movieId));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleEditMovie = (movieId) => {
+  navigate(`/edit/${movieId}`);
+};
   return (
     
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -106,7 +118,7 @@ const TableTwo = () => {
         <div className="col-span-1 flex items-center">
         <div className="flex items-center px-4 sm:px-8 space-x-3.5">
                  
-                  <button className="hover:text-primary">
+                  <button onClick={() => handleDeleteMovie(movie._id)} className="hover:text-primary">
                     <svg
                       className="fill-current"
                       width="18"
@@ -133,7 +145,7 @@ const TableTwo = () => {
                       />
                     </svg>
                   </button>
-                  <button className="hover:text-primary">
+                  <button onClick={() => handleEditMovie(movie._id)} className="hover:text-primary">
                     <svg
                       className="fill-current"
                       width="18"

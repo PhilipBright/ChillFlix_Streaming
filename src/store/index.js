@@ -88,19 +88,7 @@ const ChillFlixSlice = createSlice({
     
   },
 });
-export const getPurchaseHistory = createAsyncThunk(
-  "ChillFlix/getPurchaseHistory",
-  async () => {
-    try {
-      console.log('start fetching')
-      const response = await axios.get('http://localhost:3000/api/user/purchaseHistory');
-      return response.data;
-     
-    } catch (error) {
-      throw new Error('Failed to fetch purchase history');
-    }
-  }
-);
+
 
 
 
@@ -130,3 +118,4 @@ const store = configureStore({
 });
 
 export default store;
+

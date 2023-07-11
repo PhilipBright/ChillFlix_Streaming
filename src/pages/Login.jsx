@@ -105,7 +105,7 @@ export default function Login() {
           Remember me
         </Label>
       </div>
-      <Button onClick={handleLogin} >
+      <Button className=' border-black bg-blue-500' onClick={handleLogin} >
         Submit
       </Button>
       <div>

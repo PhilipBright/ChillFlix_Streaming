@@ -101,4 +101,17 @@ exports.getMovieById = async (req, res) => {
   }
 };
 
+module.exports.deleteMovie = async (req, res) => {
+  const movieId = req.params.id;
+
+  try {
+    // Find the movie by its ID and remove it from the database
+    await Movie.findByIdAndRemove(movieId);
+
+    res.json({ message: 'Movie deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to delete movie' });
+  }
+};
 

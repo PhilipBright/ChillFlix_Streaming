@@ -18,7 +18,7 @@ import Mylist from './pages/UserLiked'
 import MovieListDetail from './pages/MovieListDetails';
 import Payment from './pages/Payment'
 import ApiTrailer from './pages/ApiTrailerPage'
-
+import SearchResult from './pages/SearchResult'
 import { lazy, useEffect, useState } from 'react'
 import MovieModal from './Admin/backend/MovieModal'
 
@@ -41,7 +41,7 @@ export default function App() {
         <Route exact path="/movies/:id" element={<MovieDetails />} />
 
         <Route exact path="/movies/:id/trailer" element={<MovieTrailer />} />
-
+        <Route path="/Search" element={<SearchResult />} />
         <Route path="/movies/db/:id" element={<MovieListDetail />} />
         <Route exact path="/payment" element={<Payment />} />
         <Route exact path="/trailer/:id" element={<ApiTrailer />} />

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import avater from '../assets/avater.jpeg'
+import bg from '../assets/moviebg.jpeg'
 export default function PaymentPage() {
   const location = useLocation();
   const subscription = new URLSearchParams(location.search).get('subscription');
@@ -64,8 +65,7 @@ export default function PaymentPage() {
 
   return (
     <div>
-      <h1>Payment - {subscription}</h1>
-      <h1>username - {username}</h1>
+     
       
       <section className="antialiased bg-gray-100 text-gray-600 min-h-screen p-4">
         <div className="h-full">
@@ -75,7 +75,7 @@ export default function PaymentPage() {
             <div className="relative px-4 sm:px-6 lg:px-8 max-w-lg mx-auto">
               <img
                 className="rounded-t shadow-lg"
-                src="https://preview.cruip.com/mosaic/images/pay-bg.jpg"
+                src={bg}
                 width="460"
                 height="180"
                 alt="Pay background"
@@ -89,17 +89,17 @@ export default function PaymentPage() {
                   <div className="mb-2">
                     <img
                       className="-mt-8 inline-flex rounded-full"
-                      src="https://preview.cruip.com/mosaic/images/user-64-13.jpg"
+                      src={avater}
                       width="64"
                       height="64"
                       alt="User"
                     />
                   </div>
                   <h1 className="text-xl leading-snug text-gray-800 font-semibold mb-2">
-                    Front-End Learning 🔥
+                  {subscription} Plan 🔥
                   </h1>
                   <div className="text-sm">
-                    Learn how to create real web apps using HTML & CSS. Code templates included.
+                   We Offer Credit Card & Paypal to Complete Transaction!
                   </div>
                 </div>
 
@@ -198,12 +198,10 @@ export default function PaymentPage() {
                   <div className="mt-6">
                     <div className="mb-4">
                       <button onClick={handlePayment} className="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out w-full bg-indigo-500 hover:bg-indigo-600 text-white focus:outline-none focus-visible:ring-2">
-                        Pay $253.00
+                        Pay Now
                       </button>
                     </div>
-                    <div className="text-xs text-gray-500 italic text-center">
-                      You'll be charged $253, including $48 for VAT in Italy
-                    </div>
+                    
                   </div>
                 </div>
               )}
@@ -214,12 +212,10 @@ export default function PaymentPage() {
                   <div>
                     <div className="mb-4">
                       <button onClick={handlePayment} className="font-medium text-sm inline-flex items-center justify-center px-3 py-2 border border-transparent rounded leading-5 shadow-sm transition duration-150 ease-in-out w-full bg-indigo-500 hover:bg-indigo-600 text-white focus:outline-none focus-visible:ring-2">
-                        Pay with PayPal - $253.00
+                        Pay Now
                       </button>
                     </div>
-                    <div className="text-xs text-gray-500 italic text-center">
-                      You'll be charged $253, including $48 for VAT in Italy
-                    </div>
+                    
                   </div>
                 </div>
               )}
